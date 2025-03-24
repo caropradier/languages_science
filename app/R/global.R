@@ -34,7 +34,6 @@ color_assign <- c("English" =  "#CAB2D6",
                   "Indonesian" = "#FDBF6F",
                   "Other" =  "#A6CEE3",
                   "Multilingual"="#6A3D9A"
-                  #,"Italian" = "#FF7F00"
 )
 
 plot_title_style <- "color: black; font-size: 14px;"

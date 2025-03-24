@@ -324,32 +324,6 @@ mapi$p[is.na(mapi$p)] <- 0
 results_list$en_map <- mapi
 results_list$en_map <- ms_simplify(results_list$en_map, keep = 0.1)
 
-# d <- results_list$en_map
-# 
-# mako_palette <- viridis(100, option = "mako",begin = .05,end = .95)
-# palette <- colorBin(palette = mako_palette, domain = range(d$p, na.rm = TRUE), 
-#                     na.color = "transparent",bins = c(0,.3,0.5,.6,.7,.8,.9,1))
-# 
-# #interactive_region_map <- 
-#   leaflet(d) %>% 
-#   setView(lat=25, lng=0,zoom = 1.5) %>%
-#   addTiles(options = tileOptions(maxZoom = 5,minZoom = 1.5)) %>%
-#   addPolygons(
-#     fillColor = ~palette(p),
-#     weight = 1,
-#     opacity = 1,
-#     color = "black",
-#     fillOpacity = 0.7,
-#     highlightOptions = highlightOptions(color = "black", weight = 2, bringToFront = TRUE),
-#     label = ~paste0(region, ": ", round(p*100,2),"%")
-#   ) %>%
-#   addLegend(pal = palette, 
-#             values = ~p, opacity = 0.7,
-#             title = "% Articles in English", position = "bottomright",
-#             labFormat = labelFormat(suffix = "%", transform = function(x) round(x * 100, 2)))
-
-#saveWidget(interactive_region_map, file="app/www/map_publications.html")
-
 ###map references#####
 
 en_map_ref <- country_freqs %>% 
@@ -391,67 +365,6 @@ en_map_ref_region <- country_freqs %>%
 
 results_list$en_map_ref_region <- en_map_ref_region
 
-
-# d <- results_list$en_map_ref
-# 
-# rocket_palette <- viridis(100, option = "rocket",begin = .05,end = .95)
-# palette <- colorBin(palette = rocket_palette, domain = range(d$p, na.rm = TRUE),
-#                     na.color = "transparent",bins = c(.9,.91,.92,.93,.94,.95,.96,.97,.98,.99,1))
-# 
-# #interactive_reference_map <- 
-#   leaflet(d) %>%
-#   setView(lat=25, lng=0,zoom = 1.5) %>%
-#   addTiles(options = tileOptions(maxZoom = 5,minZoom = 1.5)) %>%
-#   addPolygons(
-#     fillColor = ~palette(p),
-#     weight = 1,
-#     opacity = 1,
-#     color = "black",
-#     fillOpacity = 0.7,
-#     highlightOptions = highlightOptions(color = "black", weight = 2, bringToFront = TRUE),
-#     label = ~paste0(region, ": ", round(p*100,2),"%")
-#   ) %>%
-#   addLegend(pal = palette,
-#             values = ~p, opacity = 0.7,
-#             title = "% References in English", position = "bottomright",
-#             labFormat = labelFormat(suffix = "%", transform = function(x) round(x * 100, 2)))
-
-#saveWidget(interactive_reference_map, file="app/www/map_references.html")
-
-
-#####discipline maps#######
-# got an out of memory error
-
-# 
-# en_map_disc <- disc_country_all_pubs %>% 
-#   left_join(main_fields,by ="for_division_id") %>% 
-#   group_by(country_code,lang,main_field) %>% 
-#   summarize(n = sum(n)) %>% 
-#   group_by(country_code,main_field) %>% 
-#   mutate(p = n/sum(n)) %>% 
-#   filter(lang == "en") %>% 
-#   filter(n>30)
-# 
-# mapi <- world_data %>% 
-#   left_join(en_map_disc, by = c("iso2c" = "country_code")) 
-# 
-# results_list$en_map_disc <- mapi
-# results_list$en_map_disc <- ms_simplify(results_list$en_map, keep = 0.1)
-# 
-# en_map_ref_disc <- disc_country_freqs %>% 
-#   left_join(main_fields,by ="for_division_id") %>% 
-#   group_by(country_code,cited_lang,main_field) %>% 
-#   summarize(n = sum(n)) %>% 
-#   group_by(country_code,main_field) %>% 
-#   mutate(p = n/sum(n)) %>% 
-#   filter(cited_lang == "en")%>% 
-#   filter(n>30)
-# 
-# mapi <- world_data %>% 
-#   left_join(en_map_ref_disc, by = c("iso2c" = "country_code")) 
-# 
-# results_list$en_map_ref_disc <- mapi
-# results_list$en_map_ref_disc <- ms_simplify(results_list$en_map_ref_disc, keep = 0.1)
 
 ###annex#####
 
