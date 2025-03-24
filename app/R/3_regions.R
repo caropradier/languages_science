@@ -48,7 +48,7 @@ fig_regions_server <- function(id) {
         geom_hline(yintercept = 1, linewidth = .1)+
         scale_y_continuous(labels = function(x) paste0(x*100,"%"))+
         scale_x_discrete(labels = function(x) str_wrap(x,20))+
-        scale_fill_manual(values = c("#F7C4A4FF","#F48059FF", "#CB1B4FFF"))+
+        scale_fill_manual(values = c("#F8DBC6FF","#F69B71FF", "#E13342FF"))+
         theme_minimal()+
         theme(legend.position = "none")+
         labs(x = "", 
@@ -95,7 +95,7 @@ fig_regions_server <- function(id) {
       
       rocket_palette <- viridis(100, option = "rocket",begin = .05,end = .95)
       palette <- colorBin(palette = rocket_palette, domain = range(d$p, na.rm = TRUE),
-                          na.color = "transparent",bins = c(.93,.94,.95,.96,.97,.98,.99,1))
+                          na.color = "transparent",bins = c(.92,.93,.94,.95,.96,.97,.98,.99,1))
       
       leaflet(d) %>%
         setView(lat=25, lng=0,zoom = 1.5) %>%

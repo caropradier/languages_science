@@ -74,8 +74,8 @@ GROUP BY pub_id, author_seq
 
 select distinct au.author_id,pac.country_code
 FROM dimensions_2024jul.dbo.pub as p
-inner join [userdb_larivierevg].dbo.extract_data_missing_ids as id on au.author_id=id.author_id ---aux table with author ids
 inner join [dimensions_2024jul].dbo.pub_author as au on p.pub_id=au.pub_id
+inner join [userdb_larivierevg].dbo.extract_data_missing_ids2 as id on au.author_id=id.author_id ---aux table with author ids
 left join dimensions_2024jul.dbo.author as aut on au.author_id=aut.author_id
 left join [userdb_larivierevg].dbo.simplified_pub_author_affiliation as aff on p.pub_id = aff.pub_id and au.author_seq=aff.author_seq
 left join dimensions_2024jul.dbo.pub_affiliation_country as pac on pac.pub_id=p.pub_id  and pac.affiliation_seq=aff.affiliation_seq
